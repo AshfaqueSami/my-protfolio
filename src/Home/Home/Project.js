@@ -61,7 +61,7 @@ const Project = () => {
                     <img class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56" src={project4}/>
                 </a>
                 <div class="bg-red-500 flex items-center px-3 py-1.5 leading-none rounded-full text-xs font-medium uppercase text-white inline-block">
-                    <span>Food</span>
+                    <span>Watch </span>
                 </div>
                 <h2 class="text-lg font-bold sm:text-xl md:text-2xl">Enjoy the Premium Quality</h2>
                 <p class="text-sm text-gray-500">Take the time to enjoy the life that you've created. It's totally fine to live like kings and eat like royalty.</p>
