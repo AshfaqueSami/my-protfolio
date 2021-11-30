@@ -14,10 +14,10 @@ function App() {
       <BrowserRouter>
         <Navigation></Navigation>
         <Switch>
-          <Route path='/home'>
+          <Route path='/home/:homeId'>
             <Home></Home>
           </Route>
-          <Route path='/contact'>
+          <Route path='/contact/'>
             <ContactMain></ContactMain>
           </Route>
           <Route path='/'>

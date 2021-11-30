@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { saveAs } from 'file-saver';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { NavLink } from 'react-router-dom';
+import Project from './Project';
 
 
 
@@ -10,6 +11,12 @@ const Banner = () => {
   useEffect( () => {
     AOS.init();
   } ,[])
+  const [projects, setProjects] = useState([])
+  useEffect(() => {
+      fetch('./data.json')
+          .then(res => res.json())
+          .then(data => setProjects(data))
+  }, [])
 
   return (
     <div>
@@ -31,6 +38,8 @@ const Banner = () => {
         </div>
     </div>
 </section>
+<div className='w-full max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8'>
+            </div>
 
     </div>
   );

@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 import project1 from '../../Image/Project1.png'
 import project2 from '../../Image/Project2.png'
 import project3 from '../../Image/Project3.png'
@@ -6,10 +7,26 @@ import project4 from '../../Image/Project4.jpeg'
 import project5 from '../../Image/Project5.png'
 
 const Project = () => {
+    const [projects, setProjects] = useState([]);
+    const [singleProject, setSignleProject] = useState({})
+    const {projectId} = useParams();
+    useEffect( () => {
+        fetch('./data.json')
+        .then(res => res.json())
+        .then(data => setProjects(data))
+    } ,[])
+    useEffect( () => {
+        if(projects.length) {
+            const foundProject = projects.find((data) => data.id == projectId);
+            setSignleProject(foundProject)
+        }
+    } ,[projects])
+    const history = useHistory();
+    const dynamicRouteSet = (id) => {
+        history.push(`/home/${id}`)
+    }
     return (
         <div>
-            
-
 <section class="bg-white">
     <div class="w-full px-5 py-6 mx-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16 max-w-7xl">
 
@@ -27,6 +44,7 @@ const Project = () => {
                     </div>
                     <h1 class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl"><a href="#_">Yoga Campus</a></h1>
                     <p class="pt-2 text-sm font-medium">by <a target='_blank' href="https://yoga-campus.web.app/" class="mr-1 underline">Live Site</a> · <span class="mx-1">April 23rd, 2021</span> · <span class="mx-1 text-gray-600">5 min. read</span></p>
+                    <button type='button' onClick={ () =>dynamicRouteSet(`${id}`) } style={{backgroundColor:'red'}}>Details</button>
                 </div>
             </div>
         </div>
